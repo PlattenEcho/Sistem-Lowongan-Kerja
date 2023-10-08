@@ -17,9 +17,9 @@ class PetugasFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'password' => $this->faker->word()
+            'name' => 'Sepuh',
+            'email' => 'sepuh@gmail.com',
+            'password' => '12345',
         ];
     }
 }

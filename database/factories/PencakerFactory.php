@@ -22,7 +22,7 @@ class PencakerFactory extends Factory
             'noktp' => $this->faker->unique()->nik(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => 'password',
-            'tanggal_daftar' => $this->faker->dateTimeBetween('-1 months', 'now'),
+            'tanggal_daftar' => $this->faker->dateTimeBetween('-3 months', 'now'),
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
             'tempat_lahir' => $this->faker->city(),
             'tanggal_lahir' => $this->faker->dateTime(),

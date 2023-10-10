@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             PetugasSeeder::class,
-            PencakerSeeder::class
+            PencakerSeeder::class,
+            PerusahaanSeeder::class
         ]);
     }
 }

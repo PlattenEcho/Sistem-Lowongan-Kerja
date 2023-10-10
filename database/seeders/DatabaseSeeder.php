@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             PencakerSeeder::class,
             PerusahaanSeeder::class,
             LokerSeeder::class,
+            TahapanSeeder::class,
         ]);
     }
 }

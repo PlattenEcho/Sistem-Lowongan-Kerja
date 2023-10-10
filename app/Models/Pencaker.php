@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Petugas extends Model
+class Pencaker extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nama',
-        'email',
-        'password'
-    ];
-
+    protected $table = 'pencaker';
+    protected $guarded = ['id'];
     public $timestamps = FALSE;
 }

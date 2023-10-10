@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            PetugasSeeder::class
+            PetugasSeeder::class,
+            PencakerSeeder::class
         ]);
     }
 }

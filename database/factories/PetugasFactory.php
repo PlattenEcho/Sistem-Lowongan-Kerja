@@ -17,7 +17,7 @@ class PetugasFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => 'Sepuh',
+            'nama' => 'Sepuh',
             'email' => 'sepuh@gmail.com',
             'password' => '12345',
         ];

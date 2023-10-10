@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pencaker', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
+            $table->string('no_ktp', 16)->primary();
             $table->string('nama');
-            $table->string('noktp', 16);
             $table->string('email');
             $table->string('password');
             $table->date('tanggal_daftar');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pencakers');
+        Schema::dropIfExists('pencaker');
     }
 };

@@ -19,7 +19,7 @@ class PencakerFactory extends Factory
     {
         return [
             'nama' => $this->faker->name(),
-            'noktp' => $this->faker->unique()->nik(),
+            'no_ktp' => $this->faker->unique()->nik(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => 'password',
             'tanggal_daftar' => $this->faker->dateTimeBetween('-3 months', 'now'),

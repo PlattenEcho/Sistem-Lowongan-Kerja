@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ApplyLoker;
 use Database\Seeders\PetugasSeeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
             PerusahaanSeeder::class,
             LokerSeeder::class,
             TahapanSeeder::class,
+            ApplyLokerSeeder::class,
         ]);
     }
 }

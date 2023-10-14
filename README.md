@@ -29,13 +29,16 @@ Ini adalah sistem agar pencari kerja dapat mencari pekerjaan dengan mudah
 
 5. Buka file `.env` dan sesuaikan konfigurasi database Anda, seperti mengubah nama database pada `DB_DATABASE`, username pada `DB_USERNAME`, dan password pada `DB_PASSWORD`.
 
-6. Jalankan perintah ini di terminal
+   (PERHATIAN! Buat database baru terlebih dahulu pada server MySQL anda, lalu beri nama misalnya sistem_lowongan_kerja.
+    Setelah itu, ubah nama database pada `DB_DATABASE` menjadi sistem_lowongan_kerja)
+
+7. Jalankan perintah ini di terminal
 
     ```
     php artisan key:generate
     ```
 
-7. Jalankan perintah ini di terminal
+8. Jalankan perintah ini di terminal
 
     ```
     php artisan migrate:fresh --seed

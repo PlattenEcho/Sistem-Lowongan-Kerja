@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             TahapanSeeder::class,
             ApplyLokerSeeder::class,
             TahapanApplySeeder::class,
+            UsersTableSeeder::class,
         ]);
     }
 }

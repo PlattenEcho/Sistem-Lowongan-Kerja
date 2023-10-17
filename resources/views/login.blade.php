@@ -65,7 +65,7 @@
                         </div>
                         <div>
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••" class="form-input">
+                            <input type="password" name="password" id="password" placeholder="password" class="form-input">
                             @error('password')
                                 <div class="red-alert" role="alert">
                                     <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"

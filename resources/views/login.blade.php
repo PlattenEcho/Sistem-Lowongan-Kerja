@@ -10,22 +10,64 @@
             <div class="login-container">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="login-message">
-                        Sign in ke akun Anda
+                        Log in ke akun Anda
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="#">
+
+                    @if (session()->has('loginError'))
+                        <div class="red-alert" role="alert">
+                            <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                            </svg>
+                            <span class="sr-only">Info</span>
+                            <div>
+                                <span class="font-medium">Perhatian!</span> {{ session('loginError') }}
+                            </div>
+                        </div>
+                    @endif
+
+                    <form class="space-y-4 md:space-y-6" action="/login" method="POST">
+                        @csrf
                         <div>
                             <label for="email" class="form-label">
                                 Email
                             </label>
-                            <input type="email" name="email" id="email"
-                                class="form-input"placeholder="name@company.com">
+                            <input type="email" name="email" id="email" class="form-input"
+                                placeholder="name@company.com" autofocus value="{{ old('email') }}">
+                            @error('email')
+                                <div class="red-alert" role="alert">
+                                    <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                    </svg>
+                                    <span class="sr-only">Info</span>
+                                    <div>
+                                        <span class="font-medium">Perhatian!</span> {{ $message }}
+                                    </div>
+                                </div>
+                            @enderror
                         </div>
                         <div>
                             <label for="password" class="form-label">Password</label>
                             <input type="password" name="password" id="password" placeholder="••••••••" class="form-input">
+                            @error('password')
+                                <div class="red-alert" role="alert">
+                                    <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                    </svg>
+                                    <span class="sr-only">Info</span>
+                                    <div>
+                                        <span class="font-medium">Perhatian!</span> {{ $message }}
+                                    </div>
+                                </div>
+                            @enderror
                         </div>
                         <button type="submit" class="full-horizontal-button">
-                            Sign in
+                            Log in
                         </button>
                     </form>
                 </div>

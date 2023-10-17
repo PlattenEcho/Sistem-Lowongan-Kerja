@@ -13,7 +13,7 @@ class Authenticate extends Middleware
     protected function redirectTo(Request $request): ?string
     {
         if (!$request->expectsJson()) {
-            $request->session()->put('loginError', 'Anda harus login terlebih dahulu.');
+            // $request->session()->put('loginError', 'Anda harus login terlebih dahulu.');
             return route('login');
         }
 

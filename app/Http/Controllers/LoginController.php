@@ -13,7 +13,9 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('login');
+        $loginError = session('loginError');
+
+        return view('login', compact('loginError'));
     }
 
     public function authenticate(LoginRequest $request)
@@ -27,54 +29,19 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-        return back()->with('loginError', 'Login gagal!');
+        return back()
+            ->withInput($request->only('email'))
+            ->with('loginError', 'Login gagal!');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function logout(Request $request)
     {
-        //
-    }
+        Auth::logout();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $request->session()->invalidate();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $request->session()->regenerateToken();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect('/login')->with('logoutSuccess', 'Berhasil log out!');
     }
 }

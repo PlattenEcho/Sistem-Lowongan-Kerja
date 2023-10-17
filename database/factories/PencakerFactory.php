@@ -21,7 +21,7 @@ class PencakerFactory extends Factory
             'nama' => $this->faker->name(),
             'no_ktp' => $this->faker->unique()->nik(),
             'email' => $this->faker->unique()->safeEmail(),
-            'password' => 'password',
+            'password' => '12345',
             'tanggal_daftar' => $this->faker->dateTimeBetween('-3 months', 'now'),
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
             'tempat_lahir' => $this->faker->city(),

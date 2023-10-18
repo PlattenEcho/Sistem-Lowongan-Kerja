@@ -1,27 +1,27 @@
-@extends('templates.main')
+@extends('templates.dashboard')
 
-@section('body')
-    <!-- Sidebar -->
-    <div class="flex h-screen bg-gray-200">
-        <div class="w-64 bg-gray-800 p-4">
-            <div class="text-white text-lg font-semibold mb-4">Dashboard</div>
-            <ul class="text-gray-300">
-                <li class="py-2 px-4 hover:bg-gray-700"> <a href="{{ url('kosongan') }}">Data Lowongan</a> </li>
-                <li class="py-2 px-4 hover:bg-gray-700"> <a href="{{ url('kosongan') }}">Data Pencaker</a> </li>
-                <!-- Tambahkan menu sesuai kebutuhan Anda -->
-            </ul>
-            <form action="/logout" method="POST" class="mt-4">
-                @csrf
-                <button type="submit"
-                    class="inline-flex justify-center items-center w-full py-3 px-4 text-base font-medium text-center text-white rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
-                    Logout
-                </button>
-            </form>
-        </div>
-        <!-- Content Area -->
-        <div class="flex-1 flex flex-col justify-center items-center">
-            <h1 class="text-2xl font-semibold mb-4">Hai Kamu {{ auth()->user()->name }}</h1>
-            <p class="text-5xl">&#x1F595</p>
-        </div>
-    </div>
+@section('sidebar-menu')
+    <li>
+        <a href="{{ url('kosongan') }}" class="flex items-center p-2 text-white rounded-lg dark:text-white transition duration-200 hover:bg-gray-700 dark:hover:bg-gray-600 group">
+            <svg class="flex-shrink-0 w-5 h-5 text-gray-300 transition duration-75 dark:text-gray-300 group-hover:text-gray-300 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+                <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+            </svg>
+            <span class="ml-3">Data Lowongan</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ url('kosongan') }}" class="flex items-center p-2 text-white rounded-lg dark:text-white transition duration-200 hover:bg-gray-700 dark:hover:bg-gray-600 group">
+            <svg class="flex-shrink-0 w-5 h-5 text-gray-300 transition duration-75 dark:text-gray-300 group-hover:text-gray-300 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+            </svg>
+            <span class="flex-1 ml-3 whitespace-nowrap">Data Pencaker</span>
+        </a>
+    </li>
+    <!-- Tambahkan menu sesuai kebutuhan Anda -->
+@endsection
+
+@section('content')
+    <h1 class="text-2xl font-semibold mb-4">Hai Kamu {{ auth()->user()->name }}</h1>
+    <p class="text-5xl">&#x1F595;</p>
 @endsection

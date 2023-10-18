@@ -22,10 +22,6 @@ class CheckRole
             }
         }
 
-        if ($role === 'pencaker') {
-            return redirect()->route('dashboard');
-        } else {
-            return redirect()->route('login');
-        }
+        return redirect()->route('dashboard');
     }
 }

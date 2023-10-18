@@ -22,4 +22,9 @@ class ApplyLoker extends Model
     {
         return $this->belongsTo(Loker::class, 'id_loker');
     }
+
+    public function tahapanApply()
+    {
+        return $this->hasMany(TahapanApply::class, 'id_apply');
+    }
 }

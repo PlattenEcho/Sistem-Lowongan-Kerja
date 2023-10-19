@@ -32,5 +32,5 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
-    Route::get('/loker', [LokerController::class, 'index']);
+    Route::get('/loker', [LokerController::class, 'index'])->name('loker');
 });

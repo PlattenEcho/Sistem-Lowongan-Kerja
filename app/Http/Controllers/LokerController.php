@@ -13,7 +13,7 @@ class LokerController extends Controller
      */
     public function index()
     {
-        return view('kosongan');
+        return view('petugas.loker.index');
     }
 
     /**

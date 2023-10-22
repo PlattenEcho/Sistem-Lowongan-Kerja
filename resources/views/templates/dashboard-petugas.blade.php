@@ -97,9 +97,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('loker') }}"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white @if (Request::is('loker')) bg-gray-100 dark:bg-gray-700 @else hover:bg-gray-100 dark:hover:bg-gray-700 @endif group">
-                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 @if (Request::is('loker')) text-gray-900 dark:text-white @else group-hover:text-gray-900 dark:group-hover:text-white @endif "
+                    <a href="{{ route('daftar-loker') }}"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white @if (Request::is('daftar-loker')) bg-gray-100 dark:bg-gray-700 @else hover:bg-gray-100 dark:hover:bg-gray-700 @endif group">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 @if (Request::is('daftar-loker')) text-gray-900 dark:text-white @else group-hover:text-gray-900 dark:group-hover:text-white @endif "
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                             <path
                                 d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />

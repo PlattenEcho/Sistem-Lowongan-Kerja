@@ -13,7 +13,8 @@ class LokerController extends Controller
      */
     public function index()
     {
-        return view('petugas.loker.index');
+        $daftarLoker = Loker::with('perusahaan')->get();
+        return view('petugas.loker.index', compact('daftarLoker'));
     }
 
     /**

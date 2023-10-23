@@ -13,7 +13,8 @@ class LokerController extends Controller
      */
     public function index()
     {
-        //
+        $daftarLoker = Loker::with('perusahaan')->get();
+        return view('petugas.loker.index', compact('daftarLoker'));
     }
 
     /**
@@ -21,7 +22,7 @@ class LokerController extends Controller
      */
     public function create()
     {
-        //
+        return view('petugas.loker.create');
     }
 
     /**
@@ -37,7 +38,8 @@ class LokerController extends Controller
      */
     public function show(Loker $loker)
     {
-        //
+        $loker = Loker::find($loker->id);
+        return view('petugas.loker.detail', compact('loker'));
     }
 
     /**

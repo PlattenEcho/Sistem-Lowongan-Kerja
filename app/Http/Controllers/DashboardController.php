@@ -14,9 +14,9 @@ class DashboardController extends Controller
 
         // Memeriksa peran pengguna
         if ($user->role === 'petugas') {
-            return view('dashboard.dashboard-petugas');
+            return view('petugas.dashboard');
         } elseif ($user->role === 'pencaker') {
-            return view('dashboard.dashboard-pencaker');
+            return view('pencaker.dashboard');
         }
     }
 }

@@ -17,19 +17,19 @@ class TahapanApplySeeder extends Seeder
             [
                 'id_apply' => 1,
                 'id_tahapan' => 1,
-                'nilai' => 1,
+                'nilai' => 0,
                 'tgl_update' => now()
             ],
             [
                 'id_apply' => 2,
                 'id_tahapan' => 1,
-                'nilai' => 2,
+                'nilai' => 1,
                 'tgl_update' => now()
             ],
             [
                 'id_apply' => 3,
                 'id_tahapan' => 2,
-                'nilai' => 2,
+                'nilai' => 0,
                 'tgl_update' => now()
             ],
         ];

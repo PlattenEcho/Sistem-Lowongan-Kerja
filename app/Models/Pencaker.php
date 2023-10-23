@@ -12,4 +12,9 @@ class Pencaker extends Model
     protected $table = 'pencaker';
     protected $guarded = ['id'];
     public $timestamps = FALSE;
+
+    public function appliedLoker()
+    {
+        return $this->hasMany(ApplyLoker::class, 'no_ktp', 'no_ktp');
+    }
 }

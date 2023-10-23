@@ -12,4 +12,9 @@ class Tahapan extends Model
     protected $table = 'tahapan';
     protected $guarded = ['id'];
     public $timestamps = FALSE;
+
+    public function tahapanApply()
+    {
+        return $this->hasMany(TahapanApply::class, 'id_tahapan');
+    }
 }

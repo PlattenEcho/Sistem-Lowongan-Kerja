@@ -30,7 +30,7 @@ class LokerController extends Controller
      */
     public function store(StoreLokerRequest $request)
     {
-        //
+        $data = $request->validated();
     }
 
     /**

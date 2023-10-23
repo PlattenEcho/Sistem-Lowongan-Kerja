@@ -34,12 +34,13 @@ Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
     // Show all
     Route::get('/daftar-loker', [LokerController::class, 'index'])->name('daftar-loker');
 
-    // Show individual
-    Route::get('/daftar-loker/{id}', [LokerController::class, 'show'])->name('loker');
-
     // Tambah loker
     Route::get('/daftar-loker/tambah-loker', [LokerController::class, 'create'])->name('tambah-loker');
     Route::post('/daftar-loker', [LokerController::class, 'store'])->name('simpan-loker');
+    
+    // Show individual
+    Route::get('/daftar-loker/{id}', [LokerController::class, 'show'])->name('loker');
+
 
     // Ubah loker
     Route::get('/daftar-loker/{id}/edit-loker', [LokerController::class, 'edit'])->name('edit-loker');

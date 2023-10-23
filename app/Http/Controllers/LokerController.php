@@ -22,7 +22,7 @@ class LokerController extends Controller
      */
     public function create()
     {
-        //
+        return view('petugas.loker.create');
     }
 
     /**

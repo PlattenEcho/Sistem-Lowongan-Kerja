@@ -38,7 +38,8 @@ class LokerController extends Controller
      */
     public function show(Loker $loker)
     {
-        //
+        $loker = Loker::find($loker->id);
+        return view('petugas.loker.detail', compact('loker'));
     }
 
     /**

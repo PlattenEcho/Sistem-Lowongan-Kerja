@@ -36,9 +36,9 @@ class LokerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Loker $loker)
+    public function show($id)
     {
-        $loker = Loker::find($loker->id);
+        $loker = Loker::find($id);
         return view('petugas.loker.detail', compact('loker'));
     }
 

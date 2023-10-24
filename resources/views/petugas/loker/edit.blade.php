@@ -1,11 +1,12 @@
 @extends('templates.dashboard-petugas')
 
 @section('dashboard-content')
-    <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Tambah Lowongan Kerja</h2>
+    <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Ubah Lowongan Kerja</h2>
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-            <form action="{{ route('simpan-loker') }}" method="POST">
+            <form action="/daftar-loker/{$loker->id}/edit-loker" method="PUT">
                 @csrf
+                @method('PUT')
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
                         <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
@@ -68,8 +69,8 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-5 mr-2 mb-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">+
-                    Tambah Loker</button>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-5 mr-2 mb-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                    Simpan Perubahan </button>
             </form>
         </div>
       </section>

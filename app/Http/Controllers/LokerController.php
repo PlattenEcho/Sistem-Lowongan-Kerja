@@ -31,6 +31,8 @@ class LokerController extends Controller
     public function store(StoreLokerRequest $request)
     {
         $data = $request->validated();
+        Loker::create($data);
+        return redirect()->route('loker.index')->with('success', 'Lowongan pekerjaan berhasil ditambahkan.');
     }
 
     /**
@@ -45,24 +47,30 @@ class LokerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Loker $loker)
+    public function edit($id)
     {
-        //
+        $loker = Loker::find($id);
+        return view('petugas.loker.edit', compact('loker'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLokerRequest $request, Loker $loker)
+    public function update(UpdateLokerRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        $loker = Loker::findOrFail($id);
+        $loker->update($data);
+        return redirect()->route('loker.index')->with('success', 'Lowongan pekerjaan berhasil diperbarui.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Loker $loker)
+    public function destroy($id)
     {
-        //
+        $loker = Loker::find($id);
+        $loker->delete();
+        return redirect()->route('loker.index')->with('success', 'Lowongan pekerjaan berhasil dihapus.');
     }
 }

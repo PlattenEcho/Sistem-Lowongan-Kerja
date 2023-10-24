@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokerController;
+use App\Http\Controllers\ApplyLokerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,4 +50,9 @@ Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
     // Hapus loker
     Route::get('/daftar-loker/{id}/konfirmasi-hapus-loker', [LokerController::class, 'confirmDelete'])->name('konfirmasi-hapus-loker');
     Route::delete('/daftar-loker/{id}', [LokerController::class, 'delete'])->name('hapus-loker');
+
+    //Lihat apply loker
+    Route::get('/apply-loker', [ApplyLokerController::class, 'index'])->name('apply-loker.index');
+
+
 });

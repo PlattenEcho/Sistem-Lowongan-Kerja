@@ -11,11 +11,16 @@ class ApplyLokerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index() {
+        $applyLokers = ApplyLoker::whereNotIn('id', function($query) {
+            $query->select('id_apply')->from('tahapan_apply');
+        })->get();
+        
+        return view('petugas.apply_loker.index', compact('applyLokers'));
     }
+    
 
+    
     /**
      * Show the form for creating a new resource.
      */

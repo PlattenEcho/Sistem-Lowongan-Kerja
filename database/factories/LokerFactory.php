@@ -24,7 +24,7 @@ class LokerFactory extends Factory
         return [
             'id_perusahaan' => $this->faker->numberBetween(1, 5),
             'nama' => $this->faker->jobTitle(),
-            'tipe' => $this->faker->randomElement(['Full-time', 'Part-time', 'Freelance']),
+            'tipe' => $this->faker->randomElement(['Penuh Waktu', 'Paruh Waktu', 'Lepas Waktu', 'Magang']),
             'usia_min' => $this->faker->numberBetween(20, 40),
             'usia_max' => $this->faker->numberBetween(41, 60),
             'gaji_min' => $this->faker->numberBetween(2000000, 5000000),

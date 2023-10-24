@@ -9,7 +9,7 @@
         + Tambah Loker
     </a>
 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="relative mr-2 overflow-x-auto shadow-md sm:rounded-lg">
 
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -42,7 +42,9 @@
                             {{ $loop->index + 1 }}
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $loker->nama }}
+                            <a href="{{ route('loker', $loker->id) }}"
+                                class="font-medium underline text-black-600 dark:text-black-500 hover:text-blue-700">
+                                {{ $loker->nama }}</a>
                         </th>
                         <td class="px-6 py-4">
                             {{ $loker->tipe }}

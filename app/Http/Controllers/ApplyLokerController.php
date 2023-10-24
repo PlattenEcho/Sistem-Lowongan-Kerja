@@ -16,7 +16,7 @@ class ApplyLokerController extends Controller
             $query->select('id_apply')->from('tahapan_apply');
         })->get();
         
-        return view('petugas.apply_loker.index', compact('applyLokers'));
+        return view('petugas.apply-loker.index', compact('applyLokers'));
     }
     
 

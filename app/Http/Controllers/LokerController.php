@@ -41,7 +41,7 @@ class LokerController extends Controller
         $data['id_perusahaan'] = $perusahaan->id;
         Loker::create($data);
 
-        return redirect()->route('daftar-loker')->with('createSuccess', 'Lowongan pekerjaan berhasil ditambahkan.');
+        return redirect()->route('daftar-loker')->with('success', 'Lowongan pekerjaan berhasil ditambahkan.');
     }
 
     /**
@@ -49,7 +49,7 @@ class LokerController extends Controller
      */
     public function show($id)
     {
-        $loker = Loker::find($id);
+        $loker = Loker::findOrFail($id);
         return view('petugas.loker.detail', compact('loker'));
     }
 
@@ -78,7 +78,14 @@ class LokerController extends Controller
         $data['id_perusahaan'] = $perusahaan->id;
 
         $loker->update($data);
-        return redirect()->route('daftar-loker')->with('updateSuccess', 'Lowongan pekerjaan berhasil diperbarui.');
+        return redirect()->route('daftar-loker')->with('success', 'Lowongan pekerjaan berhasil diperbarui.');
+    }
+
+
+    public function confirmDelete($id)
+    {
+        $loker = Loker::findOrFail($id);
+        return view('petugas.loker.confirm-delete', compact('loker'));
     }
 
     /**
@@ -86,8 +93,8 @@ class LokerController extends Controller
      */
     public function destroy($id)
     {
-        $loker = Loker::find($id);
+        $loker = Loker::findOrFail($id);
         $loker->delete();
-        return redirect()->route('loker.index')->with('success', 'Lowongan pekerjaan berhasil dihapus.');
+        return redirect()->route('daftar-loker')->with('success', 'Lowongan pekerjaan berhasil dihapus.');
     }
 }

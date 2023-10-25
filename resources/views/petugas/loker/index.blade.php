@@ -1,7 +1,7 @@
 @extends('templates.dashboard-petugas')
 
 @section('dashboard-content')
-    @if (session()->has('createSuccess'))
+    @if (session()->has('success'))
         <div class="green-alert" role="alert">
             <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 20 20">
@@ -10,21 +10,7 @@
             </svg>
             <span class="sr-only">Info</span>
             <div>
-                <span class="font-medium">Berhasil!</span> {{ session('createSuccess') }}
-            </div>
-        </div>
-    @endif
-
-    @if (session()->has('updateSuccess'))
-        <div class="green-alert" role="alert">
-            <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor" viewBox="0 0 20 20">
-                <path
-                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-            </svg>
-            <span class="sr-only">Info</span>
-            <div>
-                <span class="font-medium">Berhasil!</span> {{ session('updateSuccess') }}
+                <span class="font-medium">Berhasil!</span> {{ session('success') }}
             </div>
         </div>
     @endif
@@ -80,7 +66,9 @@
                         </td>
                         <td class="px-6 py-4 text-right">
                             <a href="{{ route('edit-loker', ['id' => $loker->id]) }}"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2">Edit</a>
+                            <a href="{{ route('konfirmasi-hapus-loker', ['id' => $loker->id]) }}"
+                                class="font-medium text-red-600 dark:text-red-500 hover:underline">Hapus</a>
                         </td>
                     </tr>
                 @endforeach

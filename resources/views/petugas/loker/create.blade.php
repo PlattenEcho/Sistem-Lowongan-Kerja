@@ -20,15 +20,6 @@
 
     <section class="bg-white dark:bg-gray-900 relative mt-auto mx-auto overflow-x-auto sm:rounded-lg">
         <div class="py-4 px-auto mx-px max-w-full lg:py-auto">
-            @if ($errors->any())
-                <div class="red-alert">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <form action="{{ route('simpan-loker') }}" method="POST">
                 @csrf
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -38,6 +29,19 @@
                         <input type="text" name="nama" id="nama"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Contoh : Desainer" value="{{ old('nama') }}">
+                        @error('nama')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     <div class="sm:col-span-2">
                         <label for="tipe"
@@ -50,6 +54,19 @@
                             <option value="Lepas Waktu" @selected(old('tipe') == 'Lepas Waktu')>Lepas Waktu</option>
                             <option value="Magang" @selected(old('tipe') == 'Magang')>Magang</option>
                         </select>
+                        @error('tipe')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="w-full">
@@ -58,6 +75,19 @@
                         <input type="number" name="usia_min" id="usia_min"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Contoh : 17" min="17" max="70" value="{{ old('usia_min') }}">
+                        @error('usia_min')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="usia_max" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usia
@@ -65,6 +95,19 @@
                         <input type="number" name="usia_max" id="usia_max"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Contoh : 70" min="17" max="70" value="{{ old('usia_max') }}">
+                        @error('usia_max')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="gaji_min" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gaji
@@ -72,6 +115,19 @@
                         <input type="number" name="gaji_min" id="gaji_min"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Contoh : 1000000" min="0" value="{{ old('gaji_min') }}">
+                        @error('gaji_min')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="gaji_max" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gaji
@@ -79,6 +135,19 @@
                         <input type="number" name="gaji_max" id="gaji_max"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder=" Contoh : 30000000" min="0" value="{{ old('gaji_max') }}">
+                        @error('gaji_max')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     <div class="sm:col-span-2">
                         <label for="perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -87,6 +156,19 @@
                         <input type="text" name="perusahaan" id="perusahaan"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Contoh : HYBE" value="{{ old('perusahaan') }}">
+                        @error('perusahaan')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     <div class="sm:col-span-2">
                         <label for="nama_cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
@@ -94,6 +176,19 @@
                         <input type="text" name="nama_cp" id="nama_cp"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Contoh : Kang Haerin" value="{{ old('nama_cp') }}">
+                        @error('nama_cp')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     <div class="sm:col-span-2">
                         <label for="email_cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
@@ -101,6 +196,19 @@
                         <input type="email" name="email_cp" id="email_cp"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Contoh : newjeans@gmail.com" value="{{ old('email_cp') }}">
+                        @error('email_cp')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     <div class="sm:col-span-2">
                         <label for="no_telp_cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
@@ -108,6 +216,19 @@
                         <input type="text" name="no_telp_cp" id="no_telp_cp"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Contoh : 0812XXXXXXXX" value="{{ old('no_telp_cp') }}">
+                        @error('no_telp_cp')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="tgl_aktif" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batas
@@ -115,6 +236,19 @@
                         <input type="date" name="tgl_aktif" id="tgl_aktif"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             value="{{ old('tgl_aktif') }}">
+                        @error('tgl_aktif')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="tgl_tutup" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batas
@@ -122,6 +256,19 @@
                         <input type="date" name="tgl_tutup" id="tgl_tutup"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             value="{{ old('tgl_tutup') }}">
+                        @error('tgl_tutup')
+                            <div class="red-alert" role="alert">
+                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    <span class="font-medium">Perhatian!</span> {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
                     </div>
                     {{-- <div class="sm:col-span-2">
                         <label for="status"

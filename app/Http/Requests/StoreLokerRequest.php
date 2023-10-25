@@ -22,18 +22,19 @@ class StoreLokerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => 'required|alpha:ascii',
+            'nama' => 'required',
             'tipe' => 'required',
-            'usia_min' => 'required|min:17|max:70',
-            'usia_max' => 'required|min:17|max:70',
-            'gaji_min' => 'required',
-            'gaji_max' => 'required',
-            'nama_cp' => 'required|alpha:ascii',
+            'usia_min' => 'required|gte:17|lte:70',
+            'usia_max' => 'required|gte:17|lte:70',
+            'gaji_min' => 'required|gte:0',
+            'gaji_max' => 'required|gte:0',
+            'perusahaan' => 'required',
+            'nama_cp' => 'required',
             'email_cp' => 'required|email',
             'no_telp_cp' => 'required|numeric',
             'tgl_aktif' => 'required',
             'tgl_tutup' => 'required',
-            'status' => 'required'
+            // 'status' => 'required'
         ];
     }
 
@@ -46,17 +47,25 @@ class StoreLokerRequest extends FormRequest
             'usia_max' => 'Usia maksimal',
             'gaji_min' => 'Gaji minimal',
             'gaji_max' => 'Gaji maksimal',
+            'perusahaan' => 'Nama perusahaan',
             'nama_cp' => 'Nama narahubung',
             'email_cp' => 'Email narahubung',
             'no_telp_cp' => 'Nomor telepon narahubung',
             'tgl_aktif' => 'Batas tanggal lamar',
             'tgl_tutup' => 'Tanggal tutup',
-            'status' => 'Status'
+            // 'status' => 'Status lowongan'
         ];
     }
 
     public function messages(): array
     {
-        return [];
+        return [
+            'required' => ':attribute wajib diisi!',
+            'gte' => ':attribute harus lebih besar atau sama dengan :value!',
+            'lte' => ':attribute harus lebih kecil atau sama dengan :value!',
+            // 'alpha' => ':attribute hanya boleh berisi alfabet!',
+            'email' => ':attribute hanya boleh berisi email yang valid!',
+            'numeric' => ':attribute hanya boleh berisi angka!',
+        ];
     }
 }

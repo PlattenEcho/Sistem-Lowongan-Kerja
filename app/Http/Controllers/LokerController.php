@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Loker;
 use App\Http\Requests\StoreLokerRequest;
 use App\Http\Requests\UpdateLokerRequest;
+use App\Models\Perusahaan;
 
 class LokerController extends Controller
 {
@@ -31,8 +32,16 @@ class LokerController extends Controller
     public function store(StoreLokerRequest $request)
     {
         $data = $request->validated();
+
+        $perusahaan = Perusahaan::where('nama', $data['perusahaan'])->first();
+        if (!$perusahaan) {
+            $perusahaan = Perusahaan::create(['nama' => $data['perusahaan']]);
+        }
+
+        $data['id_perusahaan'] = $perusahaan->id;
         Loker::create($data);
-        return redirect()->route('loker.index')->with('success', 'Lowongan pekerjaan berhasil ditambahkan.');
+
+        return redirect()->route('daftar-loker')->with('createSuccess', 'Lowongan pekerjaan berhasil ditambahkan.');
     }
 
     /**

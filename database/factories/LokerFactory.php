@@ -17,9 +17,23 @@ class LokerFactory extends Factory
      */
     public function definition(): array
     {
-        $tgl_update = now();
-        $tgl_aktif = $this->faker->dateTimeBetween($tgl_update, '+3 months')->format('Y-m-d');
-        $tgl_tutup = $this->faker->dateTimeBetween($tgl_aktif, '+3 months')->format('Y-m-d');
+        $status = $this->faker->randomElement(['Aktif', 'Sedang Seleksi', 'Tutup']);
+        $tgl_update = '';
+        $tgl_aktif = '';
+        $tgl_tutup = '';
+        if ($status == 'Aktif') {
+            $tgl_update = now();
+            $tgl_aktif = $this->faker->dateTimeBetween($tgl_update, '+3 months')->format('Y-m-d');
+            $tgl_tutup = $this->faker->dateTimeBetween($tgl_aktif, '+3 months')->format('Y-m-d');
+        } else if ($status == 'Sedang Seleksi') {
+            $tgl_update = now();
+            $tgl_aktif = $this->faker->dateTimeBetween($tgl_update, '+3 days')->format('Y-m-d');
+            $tgl_tutup = $this->faker->dateTimeBetween($tgl_aktif, '+7 days')->format('Y-m-d');
+        } else {
+            $tgl_update = now();
+            $tgl_aktif = now();
+            $tgl_tutup = $this->faker->dateTimeBetween($tgl_aktif, '+3 days')->format('Y-m-d');
+        }
 
         return [
             'id_perusahaan' => $this->faker->numberBetween(1, 5),
@@ -35,7 +49,7 @@ class LokerFactory extends Factory
             'tgl_update' => $tgl_update,
             'tgl_aktif' => $tgl_aktif,
             'tgl_tutup' => $tgl_tutup,
-            'status' => $this->faker->randomElement(['Aktif', 'Tidak Aktif']),
+            'status' => $status,
         ];
     }
 }

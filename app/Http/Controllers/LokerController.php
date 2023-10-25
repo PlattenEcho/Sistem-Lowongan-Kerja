@@ -58,7 +58,7 @@ class LokerController extends Controller
      */
     public function edit($id)
     {
-        $loker = Loker::find($id);
+        $loker = Loker::findOrFail($id);
         return view('petugas.loker.edit', compact('loker'));
     }
 
@@ -69,8 +69,16 @@ class LokerController extends Controller
     {
         $data = $request->validated();
         $loker = Loker::findOrFail($id);
+
+        $perusahaan = Perusahaan::where('nama', $data['perusahaan'])->first();
+        if (!$perusahaan) {
+            $perusahaan = Perusahaan::create(['nama' => $data['perusahaan']]);
+        }
+
+        $data['id_perusahaan'] = $perusahaan->id;
+
         $loker->update($data);
-        return redirect()->route('loker.index')->with('success', 'Lowongan pekerjaan berhasil diperbarui.');
+        return redirect()->route('daftar-loker')->with('updateSuccess', 'Lowongan pekerjaan berhasil diperbarui.');
     }
 
     /**

@@ -56,3 +56,8 @@ Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
 
 
 });
+
+
+Route::get('/admin', function () {
+    return view('petugas/apply-loker/administrasi');
+});

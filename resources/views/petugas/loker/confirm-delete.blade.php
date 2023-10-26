@@ -3,7 +3,7 @@
 @section('dashboard-content')
     <h1
         class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-2xl dark:text-white">
-        Yakin ingin hapus lowongan kerja ini?
+        Yakin ingin menghapus lowongan kerja ini?
     </h1>
     <a href="{{ route('daftar-loker') }}"
         class="text-white bg-gray-600 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm inline-block px-3 py-2.5 mx-auto mb-3 dark:bg-white-600 dark:hover-bg-white-700 focus:outline-none dark:focus:ring-white-800 w-full"
@@ -19,18 +19,25 @@
     </a>
 
     <section class="bg-white dark:bg-gray-900 relative mt-auto mx-auto overflow-x-auto sm:rounded-lg">
-        <div class="py-4 px-4 mx-auto max-w-full lg:py-8">
-            <form action="" method="">
+        <div class="py-4 px-auto mx-px max-w-full lg:py-auto">
+            <form action="{{ route('hapus-loker', ['id' => $loker->id]) }}" method="POST">
                 @csrf
+                @method('DELETE')
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
-                        <label for="nama"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+                            Pekerjaan</label>
                         <input type="text" name="nama" id="nama"
                             class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             value="{{ $loker->nama }}" @disabled(true)>
                     </div>
-
+                    <div class="sm:col-span-2">
+                        <label for="nama_perusahaan"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Perusahaan</label>
+                        <input type="text" name="nama_perusahaan" id="nama_perusahaan"
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ $loker->perusahaan->nama }}" @disabled(true)>
+                    </div>
                     <div class="sm:col-span-2">
                         <label for="tipe"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe</label>
@@ -102,14 +109,20 @@
                             @disabled(true)
                             class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
-                    <div class="w-full">
+                    <div class="sm:col-span-2">
                         <label for="status"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <input type="text" name="status" id="status" value="{{ $loker->status }}"
                             @disabled(true)
                             class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
-
+                </div>
+                <button type="submit"
+                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300
+                    font-medium rounded-lg text-sm px-5 py-2.5 mt-5 mr-2 mb-3 dark:bg-red-600 dark:hover:bg-red-700
+                    focus:outline-none dark:focus:ring-red-800">
+                    Hapus Loker
+                </button>
             </form>
         </div>
     </section>

@@ -19,18 +19,24 @@
     </a>
 
     <section class="bg-white dark:bg-gray-900 relative mt-auto mx-auto overflow-x-auto sm:rounded-lg">
-        <div class="py-4 px-4 mx-auto max-w-full lg:py-8">
+        <div class="py-4 px-auto mx-px max-w-full lg:py-auto">
             <form action="" method="">
                 @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
-                        <label for="nama"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+                            Pekerjaan</label>
                         <input type="text" name="nama" id="nama"
                             class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             value="{{ $loker->nama }}" @disabled(true)>
                     </div>
-
+                    <div class="sm:col-span-2">
+                        <label for="nama_perusahaan"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Perusahaan</label>
+                        <input type="text" name="nama_perusahaan" id="nama_perusahaan"
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ $loker->perusahaan->nama }}" @disabled(true)>
+                    </div>
                     <div class="sm:col-span-2">
                         <label for="tipe"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe</label>
@@ -102,7 +108,7 @@
                             @disabled(true)
                             class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
-                    <div class="w-full">
+                    <div class="sm:col-span-2">
                         <label for="status"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <input type="text" name="status" id="status" value="{{ $loker->status }}"

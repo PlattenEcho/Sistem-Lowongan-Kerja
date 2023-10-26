@@ -15,7 +15,9 @@ class LokerController extends Controller
      */
     public function index()
     {
-        $daftarLoker = Loker::with('perusahaan')->get();
+        $daftarLoker = Loker::with('perusahaan')
+            ->orderBy('status', 'asc')
+            ->get();
         return view('petugas.loker.index', compact('daftarLoker'));
     }
 
@@ -87,7 +89,12 @@ class LokerController extends Controller
     public function confirmDelete($id)
     {
         $loker = Loker::findOrFail($id);
-        return view('petugas.loker.confirm-delete', compact('loker'));
+
+        if ($loker->status == 'Tutup') {
+            return view('petugas.loker.confirm-delete', compact('loker'));
+        } else {
+            return back()->with('deleteError', 'Anda tidak boleh menghapus lowongan pekerjaan yang belum ditutup!');
+        }
     }
 
     /**
@@ -97,6 +104,7 @@ class LokerController extends Controller
     {
         $loker = Loker::findOrFail($id);
         $loker->delete();
+
         return redirect()->route('daftar-loker')->with('success', 'Lowongan pekerjaan berhasil dihapus.');
     }
 }

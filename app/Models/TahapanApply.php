@@ -12,6 +12,13 @@ class TahapanApply extends Model
     protected $table = 'tahapan_apply';
     public $timestamps = FALSE;
 
+    protected $fillable = [
+        'id_apply', 
+        'id_tahapan',
+        'nilai', 
+        'tgl_update'
+    ];
+
     public function applyLoker()
     {
         return $this->belongsTo(ApplyLoker::class, 'id_apply');

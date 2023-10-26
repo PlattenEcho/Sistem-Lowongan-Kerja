@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokerController;
 use App\Http\Controllers\ApplyLokerController;
+use App\Http\Controllers\TahapanApplyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,9 +54,12 @@ Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
 
     //Lihat apply loker
     Route::get('/apply-loker', [ApplyLokerController::class, 'index'])->name('apply-loker.index');
+    Route::get('/apply-loker/{id}', [ApplyLokerController::class, 'show'])->name('apply-loker.show');
+
+    //Seleksi administrasi
+    Route::post('/apply-loker/store-tahapan/{id}', [TahapanApplyController::class, 'store'])->name('apply-loker.store-tahapan');
+
 });
 
 
-Route::get('/admin', function () {
-    return view('petugas/apply-loker/administrasi');
-});
+

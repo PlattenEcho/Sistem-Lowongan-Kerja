@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TahapanApply;
+use App\Models\ApplyLoker;
 use App\Http\Requests\StoreTahapanApplyRequest;
 use App\Http\Requests\UpdateTahapanApplyRequest;
 
@@ -27,9 +28,18 @@ class TahapanApplyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTahapanApplyRequest $request)
+    public function store(StoreTahapanApplyRequest $request, $id)
     {
-        //
+        $applyLoker = ApplyLoker::findOrFail($id);
+        $status = $request->input('status');
+        TahapanApply::create([
+            'id_apply' => $applyLoker->id,
+            'id_tahapan' => 1,
+            'nilai' => $status, 
+            'tgl_update' => now(),
+        ]);
+
+        return redirect()->route('apply-loker.index')->with('success', 'Tahapan Apply Loker berhasil disimpan.');
     }
 
     /**

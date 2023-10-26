@@ -22,7 +22,7 @@
                     <td class="px-6 py-4">{{ $applyLoker->pencaker->nama }}</td>
                     <td class="px-6 py-4">{{ $applyLoker->tgl_apply }}</td>
                     <td class="px-6 py-4" >
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Administrasi</a>
+                            <a href="{{ route('apply-loker.show', ['id' => $applyLoker->id]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Administrasi</a>
                     </td>
                 </tr>
             @endforeach

@@ -13,11 +13,16 @@ class ApplyLokerController extends Controller
      */
     public function index() {
         $applyLokers = ApplyLoker::whereNotIn('id', function($query) {
-            $query->select('id_apply')->from('tahapan_apply');
-        })->get();
-        
+                $query->select('id_apply')->from('tahapan_apply');
+            })
+            ->whereHas('loker', function($query) {
+                $query->where('status', 'Sedang Seleksi');
+            })
+            ->get();
+            
         return view('petugas.apply-loker.index', compact('applyLokers'));
     }
+    
     
 
     
@@ -40,10 +45,12 @@ class ApplyLokerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ApplyLoker $applyLoker)
+    public function show($id)
     {
-        //
+        $applyLoker = ApplyLoker::findOrFail($id);
+        return view('petugas.apply-loker.administrasi', compact('applyLoker'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

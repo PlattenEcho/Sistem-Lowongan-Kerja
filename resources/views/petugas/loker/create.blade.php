@@ -89,7 +89,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="w-full">
                         <label for="usia_min" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usia
                             Minimal</label>
@@ -230,7 +229,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="w-full">
+                    <div class="sm:col-span-2">
                         <label for="tgl_aktif" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batas
                             Lamar</label>
                         <input type="date" name="tgl_aktif" id="tgl_aktif"
@@ -250,37 +249,6 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="w-full">
-                        <label for="tgl_tutup" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batas
-                            Tutup</label>
-                        <input type="date" name="tgl_tutup" id="tgl_tutup"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            value="{{ old('tgl_tutup') }}">
-                        @error('tgl_tutup')
-                            <div class="red-alert" role="alert">
-                                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                                </svg>
-                                <span class="sr-only">Info</span>
-                                <div>
-                                    <span class="font-medium">Perhatian!</span> {{ $message }}
-                                </div>
-                            </div>
-                        @enderror
-                    </div>
-                    {{-- <div class="sm:col-span-2">
-                        <label for="status"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-                        <select name="status" id="status"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="" selected disabled>-- Pilih Status --</option>
-                            <option value="Aktif">Aktif</option>
-                            <option value="Sedang Seleksi">Sedang Seleksi</option>
-                            <option value="Tutup">Tutup</option>
-                        </select>
-                    </div> --}}
                 </div>
                 <button type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-5 mr-2 mb-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">

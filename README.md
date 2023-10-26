@@ -38,7 +38,13 @@ Ini adalah sistem agar pencari kerja dapat mencari pekerjaan dengan mudah
     php artisan key:generate
     ```
 
-7. Jalankan perintah ini di terminal
+7. Jalankan perintah ini di terminal untuk menghubungkan file foto di /storage/app/public ke /public/storage
+
+    ```
+    php artisan storage:link
+    ```
+
+8. Jalankan perintah ini di terminal
 
     ```
     php artisan migrate:fresh --seed

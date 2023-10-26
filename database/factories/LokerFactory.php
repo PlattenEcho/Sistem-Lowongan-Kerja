@@ -23,16 +23,16 @@ class LokerFactory extends Factory
         $tgl_tutup = '';
         if ($status == 'Aktif') {
             $tgl_update = now();
-            $tgl_aktif = $this->faker->dateTimeBetween($tgl_update, '+3 months')->format('Y-m-d');
-            $tgl_tutup = $this->faker->dateTimeBetween($tgl_aktif, '+3 months')->format('Y-m-d');
+            $tgl_aktif = $this->faker->dateTimeBetween($tgl_update, '+1 months')->format('Y-m-d');
+            $tgl_tutup = NULL;
         } else if ($status == 'Sedang Seleksi') {
             $tgl_update = now();
-            $tgl_aktif = $this->faker->dateTimeBetween($tgl_update, '+3 days')->format('Y-m-d');
-            $tgl_tutup = $this->faker->dateTimeBetween($tgl_aktif, '+7 days')->format('Y-m-d');
+            $tgl_aktif = now();
+            $tgl_tutup = NULL;
         } else {
             $tgl_update = now();
             $tgl_aktif = now();
-            $tgl_tutup = $this->faker->dateTimeBetween($tgl_aktif, '+3 days')->format('Y-m-d');
+            $tgl_tutup = now();
         }
 
         return [

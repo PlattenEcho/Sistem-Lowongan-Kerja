@@ -19,88 +19,98 @@
     </a>
 
     <section class="bg-white dark:bg-gray-900 relative mt-auto mx-auto overflow-x-auto sm:rounded-lg">
-        <div class="py-4 px-auto mx-px max-w-full lg:py-auto">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="sm:col-span-2">
-                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                    <p>{{ $loker->nama }}</p>
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="tipe" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe</label>
-                    <p>{{ $loker->tipe }}</p>
-                </div>
+        <div class="py-4 px-4 mx-auto max-w-full lg:py-8">
+            <form action="" method="">
+                @csrf
+                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                    <div class="sm:col-span-2">
+                        <label for="nama"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                        <input type="text" name="nama" id="nama"
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ $loker->nama }}" @disabled(true)>
+                    </div>
 
-                <div class="w-full">
-                    <label for="usia_min" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usia
-                        Minimal</label>
-                    <p>{{ $loker->usia_min }}</p>
+                    <div class="sm:col-span-2">
+                        <label for="tipe"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe</label>
+                        <input type="text" name="tipe" id="tipe"
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ $loker->tipe }}" @disabled(true)>
+                    </div>
 
-                </div>
-                <div class="w-full">
-                    <label for="usia_max" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usia
-                        Maksimal</label>
-                    <p>{{ $loker->usia_max }}</p>
-                </div>
-                <div class="w-full">
-                    <label for="gaji_min" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gaji
-                        Minimal</label>
-                    <p>{{ $loker->gaji_min }}</p>
-                </div>
-                <div class="w-full">
-                    <label for="gaji_max" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gaji
-                        Maksimal</label>
-                    <p>{{ $loker->gaji_max }}</p>
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="perusahaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Perusahaan
-                    </label>
-                    <p>{{ $loker->perusahaan->nama }}</p>
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="nama_cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-                        Narahubung</label>
-                    <p>{{ $loker->nama_cp }}</p>
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="email_cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
-                        Narahubung</label>
-                    <p>{{ $loker->email_cp }}</p>
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="no_telp_cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
-                        Telepon Narahubung</label>
-                    <p>{{ $loker->no_telp_cp }}</p>
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="tgl_update" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
-                        Update</label>
-                    <p>{{ date('d-m-Y', strtotime($loker->tgl_update)) }}</p>
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="tgl_aktif" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batas
-                        Lamar</label>
-                    <p>{{ date('d-m-Y', strtotime($loker->tgl_aktif)) }}</p>
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="tgl_tutup" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batas
-                        Tutup</label>
-                    <p>{{ date('d-m-Y', strtotime($loker->tgl_tutup)) }}</p>
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="status"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-                    <p>{{ $loker->status }}</p>
-                </div>
-                <form action="{{ route('hapus-loker', ['id' => $loker->id]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"
-                        class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 -mt-1 mr-2 mb-3 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-                        Hapus Loker
-                    </button>
-                </form>
-            </div>
+                    <div class="w-full">
+                        <label for="usia_min" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usia
+                            Minimal</label>
+                        <input type="number" name="usia_min" id="usia_min"
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ $loker->usia_min }}" @disabled(true)>
+                    </div>
+                    <div class="w-full">
+                        <label for="usia_max" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usia
+                            Maksimal</label>
+                        <input type="number" name="usia_max" id="usia_max"
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ $loker->usia_max }}" @disabled(true)>
+                    </div>
+                    <div class="w-full">
+                        <label for="gaji_min" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gaji
+                            Minimal</label>
+                        <input type="number" name="gaji_min" id="gaji_min"
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ $loker->gaji_min }}" @disabled(true)>
+                    </div>
+                    <div class="w-full">
+                        <label for="gaji_max" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gaji
+                            Maksimal</label>
+                        <input type="number" name="gaji_max" id="gaji_max"
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ $loker->gaji_max }}" @disabled(true)>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="nama_cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+                            Narahubung</label>
+                        <input type="text" name="nama_cp" id="nama_cp" value="{{ $loker->nama_cp }}"
+                            @disabled(true)
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="email_cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
+                            Narahubung</label>
+                        <input type="email" name="email_cp" id="email_cp" value="{{ $loker->email_cp }}"
+                            @disabled(true)
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="no_telp_cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
+                            Telepon Narahubung</label>
+                        <input type="text" name="no_telp_cp" id="no_telp_cp" value="{{ $loker->no_telp_cp }}"
+                            @disabled(true)
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div>
+                    <div class="w-full">
+                        <label for="tgl_aktif" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batas
+                            Lamar</label>
+                        <input type="date" name="tgl_aktif" id="tgl_aktif" value="{{ $loker->tgl_aktif }}"
+                            @disabled(true)
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div>
+                    <div class="w-full">
+                        <label for="tgl_tutup" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batas
+                            Tutup</label>
+                        <input type="date" name="tgl_tutup" id="tgl_tutup" value="{{ $loker->tgl_tutup }}"
+                            @disabled(true)
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div>
+                    <div class="w-full">
+                        <label for="status"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                        <input type="text" name="status" id="status" value="{{ $loker->status }}"
+                            @disabled(true)
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div>
+
+            </form>
         </div>
     </section>
 @endsection

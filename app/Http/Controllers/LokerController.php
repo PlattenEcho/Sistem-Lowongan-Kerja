@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApplyLoker;
 use App\Models\Loker;
 use App\Http\Requests\StoreLokerRequest;
 use App\Http\Requests\UpdateLokerRequest;
@@ -50,7 +51,8 @@ class LokerController extends Controller
     public function show($id)
     {
         $loker = Loker::findOrFail($id);
-        return view('petugas.loker.detail', compact('loker'));
+        $applicants = ApplyLoker::where('id_loker', $id)->get();
+        return view('petugas.loker.detail', compact('loker', 'applicants'));
     }
 
     /**

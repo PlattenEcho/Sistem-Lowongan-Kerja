@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokerController;
 use App\Http\Controllers\ApplyLokerController;
+use App\Http\Controllers\PencakerController;
 use App\Http\Controllers\TahapanApplyController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +43,7 @@ Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
 
     // Show individual
     Route::get('/daftar-loker/{id}', [LokerController::class, 'show'])->name('loker');
-
+    Route::get('/daftar-loker/{id_loker}', [PencakerController::class, 'show']);
 
     // Ubah loker
     Route::get('/daftar-loker/{id}/edit-loker', [LokerController::class, 'edit'])->name('edit-loker');

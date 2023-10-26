@@ -19,18 +19,24 @@
     </a>
 
     <section class="bg-white dark:bg-gray-900 relative mt-auto mx-auto overflow-x-auto sm:rounded-lg">
-        <div class="py-4 px-4 mx-auto max-w-full lg:py-8">
+        <div class="py-4 px-auto mx-px max-w-full lg:py-auto">
             <form action="" method="">
                 @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
-                        <label for="nama"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+                            Pekerjaan</label>
                         <input type="text" name="nama" id="nama"
                             class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             value="{{ $loker->nama }}" @disabled(true)>
                     </div>
-
+                    <div class="sm:col-span-2">
+                        <label for="nama_perusahaan"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Perusahaan</label>
+                        <input type="text" name="nama_perusahaan" id="nama_perusahaan"
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ $loker->perusahaan->nama }}" @disabled(true)>
+                    </div>
                     <div class="sm:col-span-2">
                         <label for="tipe"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe</label>
@@ -89,38 +95,46 @@
                             class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
                     <div class="w-full">
+                        <label for="tgl_update" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Tanggal Update
+                        </label>
+                        <input type="date" name="tgl_update" id="tgl_update" value="{{ $loker->tgl_update }}"
+                            @disabled(true)
+                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div>
+                    <div class="w-full">
                         <label for="tgl_aktif" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batas
                             Lamar</label>
                         <input type="date" name="tgl_aktif" id="tgl_aktif" value="{{ $loker->tgl_aktif }}"
                             @disabled(true)
                             class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
-                    <div class="w-full">
-                        <label for="tgl_tutup" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batas
-                            Tutup</label>
-                        <input type="date" name="tgl_tutup" id="tgl_tutup" value="{{ $loker->tgl_tutup }}"
-                            @disabled(true)
-                            class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    </div>
-                    <div class="w-full">
+                    <div class="sm:col-span-2">
                         <label for="status"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <input type="text" name="status" id="status" value="{{ $loker->status }}"
                             @disabled(true)
                             class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
-
+                    @if ($loker->status == 'Tutup')
+                        <div class="sm:col-span-2">
+                            <label for="tgl_tutup" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Tanggal Tutup
+                            </label>
+                            <input type="date" name="tgl_tutup" id="tgl_tutup" value="{{ $loker->tgl_tutup }}"
+                                @disabled(true)
+                                class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        </div>
+                    @endif
             </form>
         </div>
     </section>
 
     <h1
         class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-2xl dark:text-white">
-        Daftar Pencari Kerja</h1>
-
-
+        Daftar Pencari Kerja
+    </h1>
     <div class="relative mt-6 mr-2 overflow-x-auto shadow-md sm:rounded-lg">
-
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -136,10 +150,8 @@
                     <th scope="col" class="px-6 py-3">
                         Seleksi
                     </th>
-
                 </tr>
             </thead>
-
             <tbody>
                 @foreach ($applicants as $applicant)
                     <tr
@@ -152,8 +164,7 @@
                                 {{ $applicant->pencaker->nama }}</a>
                         </th>
                         <td class="px-6 py-4">
-                            {{ $applicant->tgl_apply }}</a>
-
+                            {{ $applicant->tgl_apply }}
                         </td>
                         <td class="px-6 py-4">
                             @if ($applicant->tahapanApply->isNotEmpty())
@@ -165,16 +176,15 @@
                                     @elseif ($tahapan->nilai == 2)
                                         Lolos Tahap Wawancara
                                     @else
-                                        Belum dinilai
+                                        Belum Dinilai
                                     @endif
                                 @endforeach
                             @else
-                                Belum dinilai
+                                Belum Dinilai
                             @endif
                         </td>
                     </tr>
                 @endforeach
-
             </tbody>
         </table>
     </div>

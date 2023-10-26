@@ -2,8 +2,7 @@
 
 @section('dashboard-content')
     <div class="container">
-        <h1
-            class="jumbotron-h1">
+        <h1 class="jumbotron-h1">
             Detail Apply Loker
         </h1>
         <a href="{{ route('apply-loker.index') }}"
@@ -24,51 +23,43 @@
             <div class="mb-6">
                 <label for="name" class="form-label">Pencari
                     Kerja</label>
-                <input type="text" id="name" value="{{ $applyLoker->pencaker->nama }}"
-                    class="form-input"
-                    required disabled>
+                <input type="text" id="name" value="{{ $applyLoker->pencaker->nama }}" class="form-input" required
+                    disabled>
             </div>
             <div class="mb-6">
                 <label for="gender" class="form-label">Jenis
                     Kelamin</label>
-                <input type="input" id="gender" value="{{ $applyLoker->pencaker->jenis_kelamin }}"
-                    class="form-input"
+                <input type="input" id="gender" value="{{ $applyLoker->pencaker->jenis_kelamin }}" class="form-input"
                     required disabled>
             </div>
             <div class="mb-6">
                 <label for="telpon" class="form-label">No.
                     Telepon</label>
-                <input type="input" id="telpon" value="{{ $applyLoker->pencaker->no_telp }}"
-                    class="form-input"
+                <input type="input" id="telpon" value="{{ $applyLoker->pencaker->no_telp }}" class="form-input"
                     required disabled>
             </div>
             <div class="mb-6">
                 <label for="job" class="form-label">Pekerjaan yang
                     Dilamar</label>
-                <input type="input" id="job" value="{{ $applyLoker->loker->nama }}"
-                    class="form-input"
-                    required disabled>
+                <input type="input" id="job" value="{{ $applyLoker->loker->nama }}" class="form-input" required
+                    disabled>
             </div>
             <div class="mb-6">
                 <label for="type" class="form-label">Tipe
                     Pekerjaan</label>
-                <input type="input" id="type" value="{{ $applyLoker->loker->tipe }}"
-                    class="form-input"
-                    required disabled>
+                <input type="input" id="type" value="{{ $applyLoker->loker->tipe }}" class="form-input" required
+                    disabled>
             </div>
             <div class="mb-6">
                 <label for="cptelpon" class="form-label">No. Telepon
-                    CP</label>
-                <input type="input" id="cptelpon" value="{{ $applyLoker->loker->no_telp_cp }}"
-                    class="form-input"
+                    Narahubung</label>
+                <input type="input" id="cptelpon" value="{{ $applyLoker->loker->no_telp_cp }}" class="form-input"
                     required disabled>
             </div>
-            <button type="submit" name="status" value="1"
-                class="green-button">Lulus
+            <button type="submit" name="status" value="1" class="green-button">Lulus
                 Administrasi
             </button>
-            <button type="submit" name="status" value="0"
-                class="red-button">Tidak
+            <button type="submit" name="status" value="0" class="red-button">Tidak
                 Lulus Administrasi
             </button>
 

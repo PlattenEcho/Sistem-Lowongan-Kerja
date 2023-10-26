@@ -16,13 +16,13 @@
         </thead>
         <tbody>
             @foreach ($applyLokers as $applyLoker)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="row-table">
                     <td class="px-6 py-4">{{ $loop->index + 1 }}</td>
                     <td class="px-6 py-4">{{ $applyLoker->loker->nama }}</td>
                     <td class="px-6 py-4">{{ $applyLoker->pencaker->nama }}</td>
                     <td class="px-6 py-4">{{ $applyLoker->tgl_apply }}</td>
                     <td class="px-6 py-4" >
-                            <a href="{{ route('apply-loker.show', ['id' => $applyLoker->id]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Administrasi</a>
+                            <a href="{{ route('apply-loker.show', ['id' => $applyLoker->id]) }}" class="blue-hyperlink">Administrasi</a>
                     </td>
                 </tr>
             @endforeach

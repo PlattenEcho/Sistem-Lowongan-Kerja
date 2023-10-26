@@ -38,7 +38,7 @@ Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
     // Tambah loker
     Route::get('/daftar-loker/tambah-loker', [LokerController::class, 'create'])->name('tambah-loker');
     Route::post('/daftar-loker', [LokerController::class, 'store'])->name('simpan-loker');
-    
+
     // Show individual
     Route::get('/daftar-loker/{id}', [LokerController::class, 'show'])->name('loker');
 
@@ -49,12 +49,10 @@ Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
 
     // Hapus loker
     Route::get('/daftar-loker/{id}/konfirmasi-hapus-loker', [LokerController::class, 'confirmDelete'])->name('konfirmasi-hapus-loker');
-    Route::delete('/daftar-loker/{id}', [LokerController::class, 'delete'])->name('hapus-loker');
+    Route::delete('/daftar-loker/{id}', [LokerController::class, 'destroy'])->name('hapus-loker');
 
     //Lihat apply loker
     Route::get('/apply-loker', [ApplyLokerController::class, 'index'])->name('apply-loker.index');
-
-
 });
 
 

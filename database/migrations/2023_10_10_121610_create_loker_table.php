@@ -24,10 +24,10 @@ return new class extends Migration
             $table->string('nama_cp');
             $table->string('email_cp');
             $table->string('no_telp_cp');
-            $table->date('tgl_update');
+            $table->date('tgl_update')->default(now());
             $table->date('tgl_aktif');
-            $table->date('tgl_tutup');
-            $table->string('status');
+            $table->date('tgl_tutup')->nullable();
+            $table->string('status')->default('Aktif');
         });
     }
 

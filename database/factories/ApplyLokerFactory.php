@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Loker;
 use App\Models\Pencaker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,12 +18,22 @@ class ApplyLokerFactory extends Factory
      */
     public function definition(): array
     {
-        $pencaker = Pencaker::factory()->create();
+        $loker = Loker::inRandomOrder()->first();
+        $tgl_apply = '';
+        if ($loker->status == 'Aktif') {
+            $tgl_apply = $this->faker->dateTimeBetween($loker->tgl_update, $loker->tgl_aktif);
+        } else if ($loker->status == 'Sedang Seleksi') {
+            $tgl_apply = now();
+        } else {
+            $tgl_apply = now();
+        }
 
         return [
-            'id_loker' => $this->faker->numberBetween(1, 15),
-            'no_ktp' => $pencaker->no_ktp,
-            'tgl_apply' => now()
+            'id_loker' => $loker->id,
+            'no_ktp' => Pencaker::inRandomOrder()->value('no_ktp'),
+            'tgl_apply' => $tgl_apply
         ];
+
+        // return [];
     }
 }

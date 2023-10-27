@@ -59,8 +59,4 @@ Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
 
     //Seleksi administrasi
     Route::post('/apply-loker/store-tahapan/{id}', [TahapanApplyController::class, 'store'])->name('apply-loker.store-tahapan');
-
 });
-
-
-

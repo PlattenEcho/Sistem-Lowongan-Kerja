@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ApplyLoker;
 use App\Http\Requests\StoreApplyLokerRequest;
 use App\Http\Requests\UpdateApplyLokerRequest;
+use App\Models\TahapanApply;
 
 class ApplyLokerController extends Controller
 {
@@ -60,7 +61,16 @@ class ApplyLokerController extends Controller
     public function show($id)
     {
         $applyLoker = ApplyLoker::findOrFail($id);
-        return view('petugas.apply-loker.administrasi', compact('applyLoker'));
+        $tahapanApply = TahapanApply::where('id_apply', $applyLoker->id)
+            ->where('id_tahapan', 1)
+            ->where('nilai', 1)
+            ->first();
+
+        if ($tahapanApply) {
+            return view('petugas.apply-loker.wawancara', compact('applyLoker'));
+        } else {
+            return view('petugas.apply-loker.administrasi', compact('applyLoker'));
+        }
     }
 
 

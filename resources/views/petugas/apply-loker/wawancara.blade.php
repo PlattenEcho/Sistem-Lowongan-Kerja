@@ -24,10 +24,10 @@
             @include('templates.detail-pencaker')
 
             <button type="submit" name="status" value="1" class="green-button">Lulus
-                Administrasi
+                Wawancara
             </button>
             <button type="submit" name="status" value="0" class="red-button">Tidak
-                Lulus Administrasi
+                Lulus Wawancara
             </button>
         </form>
     </div>

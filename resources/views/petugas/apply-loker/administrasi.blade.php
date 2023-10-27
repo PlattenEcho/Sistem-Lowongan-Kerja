@@ -56,6 +56,41 @@
                 <input type="input" id="cptelpon" value="{{ $applyLoker->loker->no_telp_cp }}" class="form-input"
                     required disabled>
             </div>
+
+            @if ($applyLoker->pencaker->foto_profil)
+                <div class="mb-6">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        for="imageProfil">Foto</label>
+                    <img class="h-auto max-w-xs" src="{{ asset('storage/' . $applyLoker->pencaker->foto_profil) }}"
+                        alt="">
+                </div>
+            @else
+                <div class="mb-6">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        for="imageProfil">Foto</label>
+                    <img class="h-auto max-w-xs"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/768px-Default_pfp.svg.png"
+                        alt="">
+                </div>
+            @endif
+
+            @if ($applyLoker->pencaker->foto_ktp)
+                <div class="mb-6">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="imageProfil">Scan
+                        KTP</label>
+                    <img class="h-auto max-w-xs" src="{{ asset('storage/' . $applyLoker->pencaker->foto_ktp) }}"
+                        alt="">
+                </div>
+            @else
+                <div class="mb-6">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="imageProfil">Scan
+                        KTP</label>
+                    <img class="h-auto max-w-xs"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/768px-Default_pfp.svg.png"
+                        alt="">
+                </div>
+            @endif
+
             <button type="submit" name="status" value="1" class="green-button">Lulus
                 Administrasi
             </button>

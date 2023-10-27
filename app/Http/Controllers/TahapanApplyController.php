@@ -35,7 +35,7 @@ class TahapanApplyController extends Controller
         TahapanApply::create([
             'id_apply' => $applyLoker->id,
             'id_tahapan' => 1,
-            'nilai' => $status, 
+            'nilai' => $status,
             'tgl_update' => now(),
         ]);
 

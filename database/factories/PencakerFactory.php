@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
  */
 class PencakerFactory extends Factory
 {
+    private static $counter = 0;
     /**
      * Define the model's default state.
      *
@@ -17,6 +18,8 @@ class PencakerFactory extends Factory
      */
     public function definition(): array
     {
+        self::$counter++;
+
         return [
             'nama' => $this->faker->name(),
             'no_ktp' => $this->faker->unique()->nik(),
@@ -28,7 +31,9 @@ class PencakerFactory extends Factory
             'tanggal_lahir' => $this->faker->dateTime(),
             'alamat' => $this->faker->address(),
             'kota' => $this->faker->city(),
-            'no_telp' => $this->faker->phoneNumber()
+            'no_telp' => $this->faker->phoneNumber(),
+            'foto_profil' => 'foto-profil/' . self::$counter . '.png',
+            'foto_ktp' => 'foto-ktp/' . self::$counter . '.png',
         ];
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('nilai');
             $table->date('tgl_update');
 
-            $table->foreign('id_apply')->references('id')->on('apply_loker');
+            $table->foreign('id_apply')->references('id')->on('apply_loker')->onDelete('cascade');
             $table->foreign('id_tahapan')->references('id')->on('tahapan');
             $table->primary(['id_apply', 'id_tahapan']);
         });

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('apply_loker', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_loker');
-            $table->foreign('id_loker')->references('id')->on('loker');
+            $table->foreign('id_loker')->references('id')->on('loker')->onDelete('cascade');
             $table->string('no_ktp', 16);
             $table->foreign('no_ktp')->references('no_ktp')->on('pencaker');
             $table->date('tgl_apply');

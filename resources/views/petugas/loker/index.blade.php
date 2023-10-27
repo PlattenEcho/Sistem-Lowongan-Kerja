@@ -15,6 +15,20 @@
         </div>
     @endif
 
+    @if (session()->has('deleteError'))
+        <div class="red-alert" role="alert">
+            <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 20 20">
+                <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+            </svg>
+            <span class="sr-only">Info</span>
+            <div>
+                <span class="font-medium">Perhatian!</span> {{ session('deleteError') }}
+            </div>
+        </div>
+    @endif
+
     <h1
         class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-2xl dark:text-white">
         Daftar Lowongan Kerja</h1>
@@ -31,7 +45,7 @@
                     <th scope="col" class="px-3 py-3 text-left">
                         No.
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-3 py-3">
                         Nama
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -40,8 +54,11 @@
                     <th scope="col" class="px-6 py-3">
                         Perusahaan
                     </th>
+                    <th scope="col" class="px-6 py-3">
+                        Status
+                    </th>
                     <th scope="col" class="px-6 py-3 text-right">
-                        Action
+                        Tindakan
                     </th>
                 </tr>
             </thead>
@@ -53,7 +70,7 @@
                         <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $loop->index + 1 }}
                         </th>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <a href="{{ route('loker', $loker->id) }}"
                                 class="font-medium text-black-600 dark:text-black-500 hover:underline">
                                 {{ $loker->nama }}</a>
@@ -63,6 +80,9 @@
                         </td>
                         <td class="px-6 py-4">
                             {{ $loker->perusahaan->nama }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $loker->status }}
                         </td>
                         <td class="px-6 py-4 text-right">
                             <a href="{{ route('edit-loker', ['id' => $loker->id]) }}"

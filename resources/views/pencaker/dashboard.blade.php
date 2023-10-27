@@ -1,14 +1,14 @@
 @extends('templates.main')
 
 @section('body')
-    <h1 class="text-2xl font-semibold mb-4">Hai, Pencari Kerja {{ auth()->user()->name }}</h1>
-    <h1 class="text-2xl font-semibold mb-4">Sayang sekali sistem ini tidak menyediakan sistem untuk pencari kerja</h1>
-    {{-- <p class="text-5xl">&#x1F595;</p> --}}
+<div class="border border-2 border-dark p-4" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white;">
+    <h1 class="text-2xl font-semibold mb-4 text-center">Hai {{ auth()->user()->name }}</h1>
+    <h1 class="text-2xl font-semibold mb-4 text-center">Maaf Sistem ini Tidak Melayani Pencari Kerja</h1>
     <form action="/logout" method="post">
         @csrf
-        <button type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+        <button type="submit" class="text-white bg-red-500 hover:bg-danger-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
             Log out
         </button>
     </form>
+</div>
 @endsection

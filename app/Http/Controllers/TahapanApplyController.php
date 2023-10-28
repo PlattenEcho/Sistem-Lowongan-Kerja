@@ -72,6 +72,20 @@ class TahapanApplyController extends Controller
         $tahapanApply->tgl_update = now();
         $tahapanApply->save();
 
+        $loker = $applyLoker->loker;
+
+        // Check if all related ApplyLoker records have id_tahapan = 2
+        $allTahapan2 = $loker->appliedFor->every(function ($applyLoker) {
+            return $applyLoker->tahapanApply->where('id_tahapan', 2)->count() > 0;
+        });
+
+        if ($allTahapan2) {
+            // If all Tahapan Apply have id_tahapan 2, update tgl_tutup loker
+            $loker->tgl_tutup = now();
+            $loker->status = 'Tutup';
+            $loker->save();
+        }
+
         return redirect()->route('apply-loker.index')->with('success', 'Tahapan Apply Loker berhasil disimpan.');
     }
 

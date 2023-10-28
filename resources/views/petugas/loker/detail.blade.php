@@ -138,17 +138,17 @@
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-3 py-3 text-left">
+                    <th scope="col" class="px-3 py-4 text-left">
                         No.
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-4">
                         Nama
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-4">
                         Tanggal Apply
                     </th>
-                    <th scope="col" class="px-6 py-3">
-                        Seleksi
+                    <th scope="col" class="px-6 py-4">
+                        Tahap Seleksi
                     </th>
                 </tr>
             </thead>
@@ -160,27 +160,30 @@
                             {{ $loop->index + 1 }}
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <a href="#" class="font-medium text-black-600 dark:text-black-500 hover:underline">
-                                {{ $applicant->pencaker->nama }}</a>
+                            {{ $applicant->pencaker->nama }}</a>
                         </th>
                         <td class="px-6 py-4">
                             {{ $applicant->tgl_apply }}
                         </td>
                         <td class="px-6 py-4">
-                            @if ($applicant->tahapanApply->isNotEmpty())
-                                @foreach ($applicant->tahapanApply as $tahapan)
-                                    @if ($tahapan->nilai == 0)
-                                        Gagal
-                                    @elseif ($tahapan->nilai == 1)
-                                        Lolos Tahap Administrasi
-                                    @elseif ($tahapan->nilai == 2)
-                                        Lolos Tahap Wawancara
-                                    @else
-                                        Belum Dinilai
-                                    @endif
-                                @endforeach
+                            @if ($applicant->tahapanApply)
+                                @php
+                                    $status = 'Belum dinilai';
+
+                                    if ($applicant->tahapanApply->nilai == 0) {
+                                        $status = 'Gagal';
+                                    } elseif ($applicant->tahapanApply->nilai == 1) {
+                                        if ($applicant->tahapanApply->id_tahapan == 1) {
+                                            $status = 'Lolos Tahap Administrasi';
+                                        } else {
+                                            $status = 'Lolos Tahap Wawancara';
+                                        }
+                                    }
+
+                                    echo $status;
+                                @endphp
                             @else
-                                Belum Dinilai
+                                Belum dinilai
                             @endif
                         </td>
                     </tr>

@@ -34,13 +34,13 @@
         Daftar Lowongan Kerja</h1>
 
     <div class="flex justify-center items-center h-full">
-        <div class="bg-green-500 p-4 m-2">
+        <div class="bg-green-500 p-4 text-white font-bold m-2 rounded-lg hover:bg-green-600">
             <p>Aktif: {{ $countAktif }}</p>
         </div>
-        <div class="bg-yellow-200 p-4 m-2">
+        <div class="bg-yellow-400 p-4 text-white font-bold m-2 rounded-lg hover:bg-yellow-500">
             <p>Sedang Seleksi: {{ $countSedangSeleksi }}</p>
         </div>
-        <div class="bg-red-500 p-4 m-2">
+        <div class="bg-red-500 p-4 text-white font-bold m-2 rounded-lg hover:bg-red-600">
             <p>Tutup: {{ $countTutup }}</p>
         </div>
     </div>
@@ -97,9 +97,9 @@
                         </td>
                         <td
                             class="px-4 py-1 text-center 
-                            @if ($loker->status === 'Aktif') bg-green-500 text-white rounded-full 
-                            @elseif($loker->status === 'Sedang Seleksi') bg-yellow-500 text-white rounded-full 
-                            @elseif($loker->status === 'Tutup') bg-red-500 text-white rounded-full @endif">
+                            @if ($loker->status === 'Aktif') text-green-500 font-bold
+                            @elseif($loker->status === 'Sedang Seleksi') text-yellow-400 font-bold 
+                            @elseif($loker->status === 'Tutup') text-red-500 font-bold @endif">
                             {{ $loker->status }}
                         </td>
                         {{-- <td class="px-4 py-1">

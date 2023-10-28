@@ -14,12 +14,9 @@ class LokerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function getStatusCounts()
+    public function getStatusCounts($status)
     {
-        $statusCounts = Loker::selectRaw('status, count(*) as count')
-            ->groupBy('status')
-            ->pluck('count', 'status')
-            ->toArray();
+        $statusCounts = Loker::where('status', $status)->count();
 
         return $statusCounts;
     }
@@ -31,9 +28,11 @@ class LokerController extends Controller
             ->orderBy('status', 'asc')
             ->get();
 
-        $statusCounts = $this->getStatusCounts();
+        $countAktif = $this->getStatusCounts('Aktif');
+        $countSedangSeleksi = $this->getStatusCounts('Sedang Seleksi');
+        $countTutup = $this->getStatusCounts('Tutup');
 
-        return view('petugas.loker.index', compact('daftarLoker', 'statusCounts'));
+        return view('petugas.loker.index', compact('daftarLoker', 'countAktif', 'countSedangSeleksi', 'countTutup'));
     }
 
     /**

@@ -14,12 +14,26 @@ class LokerController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function getStatusCounts()
+    {
+        $statusCounts = Loker::selectRaw('status, count(*) as count')
+            ->groupBy('status')
+            ->pluck('count', 'status')
+            ->toArray();
+
+        return $statusCounts;
+    }
+
+
     public function index()
     {
         $daftarLoker = Loker::with('perusahaan')
             ->orderBy('status', 'asc')
             ->get();
-        return view('petugas.loker.index', compact('daftarLoker'));
+
+        $statusCounts = $this->getStatusCounts();
+
+        return view('petugas.loker.index', compact('daftarLoker', 'statusCounts'));
     }
 
     /**

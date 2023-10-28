@@ -43,7 +43,7 @@ Route::middleware(['auth', 'checkrole:petugas'])->group(function () {
 
     // Show individual
     Route::get('/daftar-loker/{id}', [LokerController::class, 'show'])->name('loker');
-    Route::get('/daftar-loker/{id_loker}', [PencakerController::class, 'show']);
+    // Route::get('/daftar-loker/{id_loker}', [PencakerController::class, 'show']);
 
     // Ubah loker
     Route::get('/daftar-loker/{id}/edit-loker', [LokerController::class, 'edit'])->name('edit-loker');

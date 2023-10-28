@@ -25,6 +25,6 @@ class ApplyLoker extends Model
 
     public function tahapanApply()
     {
-        return $this->hasOne(TahapanApply::class, 'id_apply');
+        return $this->hasMany(TahapanApply::class, 'id_apply');
     }
 }

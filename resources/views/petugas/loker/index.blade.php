@@ -32,7 +32,7 @@
     <div class="bg-green-500 p-4 m-2">
         <p>Aktif: {{ $statusCounts['Aktif'] }}</p>
     </div>
-    <div class="bg-yellow-500 p-4 m-2">
+    <div class="bg-yellow-200 p-4 m-2">
         <p>Sedang Seleksi: {{ $statusCounts['Sedang Seleksi'] }}</p>
     </div>
     <div class="bg-red-500 p-4 m-2">
@@ -87,9 +87,17 @@
                 <td class="px-6 py-4">
                     {{ $loker->perusahaan->nama }}
                 </td>
-                <td class="px-4 py-4">
+                <td class="px-4 py-1 text-center
+    @if($loker->status === 'Aktif') bg-green-500 text-white rounded-full
+    @elseif($loker->status === 'Sedang Seleksi') bg-yellow-500 text-white rounded-full
+    @elseif($loker->status === 'Tutup') bg-red-500 text-white rounded-full
+    @endif
+">
                     {{ $loker->status }}
                 </td>
+
+
+
                 <td class="px-5 py-4 text-right">
                     <a href="{{ route('edit-loker', ['id' => $loker->id]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2">Edit</a>
                     <a href="{{ route('konfirmasi-hapus-loker', ['id' => $loker->id]) }}" class="font-medium text-red-600 dark:text-red-500 hover:underline">Hapus</a>

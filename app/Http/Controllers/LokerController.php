@@ -96,10 +96,10 @@ class LokerController extends Controller
     {
         $loker = Loker::findOrFail($id);
 
-        if ($loker->status == 'Tutup') {
+        if ($loker->status == 'Tutup' || $loker->appliedFor->count() == 0) {
             return view('petugas.loker.confirm-delete', compact('loker'));
         } else {
-            return back()->with('deleteError', 'Anda tidak boleh menghapus lowongan pekerjaan yang belum ditutup!');
+            return back()->with('deleteError', 'Anda tidak boleh menghapus lowongan pekerjaan yang belum ditutup atau sedang seleksi!');
         }
     }
 

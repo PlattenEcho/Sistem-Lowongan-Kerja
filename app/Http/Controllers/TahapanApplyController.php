@@ -39,6 +39,30 @@ class TahapanApplyController extends Controller
             'tgl_update' => now(),
         ]);
 
+        $loker = $applyLoker->loker;
+        $applyLokerCount = $loker->appliedFor->count();
+        $tahapanApplyCount = $loker->appliedFor()
+            ->whereHas('tahapanApply', function ($query) {
+                $query->where(function ($subQuery) {
+                    $subQuery->where('id_tahapan', 2)
+                        ->whereIn('nilai', [0, 1])
+                        ->orWhere(function ($subQuery) {
+                            $subQuery->where('id_tahapan', 1)
+                                ->where('nilai', 0);
+                        });
+                });
+            })
+            ->count();
+
+        // dd($tahapanApplyCount, $applyLokerCount);
+
+        if ($tahapanApplyCount === $applyLokerCount) {
+            // If the counts match, update tgl_tutup loker
+            $loker->tgl_tutup = now();
+            $loker->status = 'Tutup';
+            $loker->save();
+        }
+
         return redirect()->route('apply-loker.index')->with('success', 'Tahapan Apply Loker berhasil disimpan.');
     }
 
@@ -73,10 +97,21 @@ class TahapanApplyController extends Controller
         $tahapanApply->save();
 
         $loker = $applyLoker->loker;
-        $tahapanApplyCount = TahapanApply::whereIn('id_apply', $loker->appliedFor->pluck('id'))
+        $applyLokerCount = $loker->appliedFor->count();
+        $tahapanApplyCount = $loker->appliedFor()
+            ->whereHas('tahapanApply', function ($query) {
+                $query->where(function ($subQuery) {
+                    $subQuery->where('id_tahapan', 2)
+                        ->whereIn('nilai', [0, 1])
+                        ->orWhere(function ($subQuery) {
+                            $subQuery->where('id_tahapan', 1)
+                                ->where('nilai', 0);
+                        });
+                });
+            })
             ->count();
 
-        $applyLokerCount = $loker->appliedFor->count();
+        // dd($tahapanApplyCount, $applyLokerCount);
 
         if ($tahapanApplyCount === $applyLokerCount) {
             // If the counts match, update tgl_tutup loker

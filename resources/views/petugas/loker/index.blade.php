@@ -57,7 +57,7 @@
                     <th scope="col" class="px-4 py-3">
                         Status
                     </th>
-                    <th scope="col" class="px-6 py-3 text-right">
+                    <th scope="col" class="px-5 py-3 text-right">
                         Tindakan
                     </th>
                 </tr>
@@ -84,7 +84,7 @@
                         <td class="px-4 py-4">
                             {{ $loker->status }}
                         </td>
-                        <td class="px-6 py-4 text-right">
+                        <td class="px-5 py-4 text-right">
                             <a href="{{ route('edit-loker', ['id' => $loker->id]) }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2">Edit</a>
                             <a href="{{ route('konfirmasi-hapus-loker', ['id' => $loker->id]) }}"

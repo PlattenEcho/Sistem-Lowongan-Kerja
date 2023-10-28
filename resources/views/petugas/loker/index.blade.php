@@ -62,7 +62,7 @@
                 <th scope="col" class="px-6 py-3">
                     Perusahaan
                 </th>
-                <th scope="col" class="px-4 py-3">
+                <th scope="col" class="px-4 py-3 text-center">
                     Status
                 </th>
                 <th scope="col" class="px-5 py-3 text-right">

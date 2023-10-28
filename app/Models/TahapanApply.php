@@ -10,14 +10,14 @@ class TahapanApply extends Model
     use HasFactory;
 
     protected $table = 'tahapan_apply';
-    public $timestamps = FALSE;
-
+    protected $primaryKey = 'id_apply';
     protected $fillable = [
-        'id_apply', 
+        'id_apply',
         'id_tahapan',
-        'nilai', 
+        'nilai',
         'tgl_update'
     ];
+    public $timestamps = FALSE;
 
     public function applyLoker()
     {

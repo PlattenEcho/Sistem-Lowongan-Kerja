@@ -18,8 +18,9 @@
             </div>
         </a>
 
-        <form action="{{ route('apply-loker.store-tahapan', ['id' => $applyLoker->id]) }}" method="POST">
+        <form action="{{ route('apply-loker.update-tahapan', ['id' => $applyLoker->id]) }}" method="POST">
             @csrf
+            @method('PUT')
 
             @include('templates.detail-pencaker')
 

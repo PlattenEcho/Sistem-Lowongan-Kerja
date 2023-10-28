@@ -61,9 +61,18 @@ class TahapanApplyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTahapanApplyRequest $request, TahapanApply $tahapanApply)
+    public function update(UpdateTahapanApplyRequest $request, $id)
     {
-        //
+        $applyLoker = ApplyLoker::findOrFail($id);
+        $tahapanApply = $applyLoker->tahapanApply;
+        $status = $request->input('status');
+
+        $tahapanApply->id_tahapan = 2;
+        $tahapanApply->nilai = $status;
+        $tahapanApply->tgl_update = now();
+        $tahapanApply->save();
+
+        return redirect()->route('apply-loker.index')->with('success', 'Tahapan Apply Loker berhasil disimpan.');
     }
 
     /**

@@ -36,9 +36,6 @@ class ApplyLokerController extends Controller
         return view('petugas.apply-loker.index', compact('applyLokersForAdmin', 'applyLokersForInterview'));
     }
 
-
-
-
     /**
      * Show the form for creating a new resource.
      */

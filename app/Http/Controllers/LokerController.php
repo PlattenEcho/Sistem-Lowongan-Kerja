@@ -96,7 +96,7 @@ class LokerController extends Controller
         $data['id_perusahaan'] = $perusahaan->id;
 
         $tglAktif = Carbon::parse($data['tgl_aktif']);
-        if ($tglAktif->isSameDay(now())) {
+        if ($tglAktif->isPast()) {
             $loker->status = 'Sedang Seleksi';
         }
 

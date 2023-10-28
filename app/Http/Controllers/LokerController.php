@@ -98,6 +98,8 @@ class LokerController extends Controller
         $tglAktif = Carbon::parse($data['tgl_aktif']);
         if ($tglAktif->isPast()) {
             $loker->status = 'Sedang Seleksi';
+        } else if ($tglAktif->isFuture()) {
+            $loker->status = 'Aktif';
         }
 
         $loker->update($data);

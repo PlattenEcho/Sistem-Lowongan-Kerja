@@ -13,6 +13,6 @@ class ApplyLokerSeeder extends Seeder
      */
     public function run(): void
     {
-        ApplyLoker::factory()->count(10)->create();
+        ApplyLoker::factory()->count(30)->create();
     }
 }

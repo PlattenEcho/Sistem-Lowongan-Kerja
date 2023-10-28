@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ApplyLoker;
+use Carbon\Carbon;
 use App\Models\Loker;
+use App\Models\ApplyLoker;
+use App\Models\Perusahaan;
 use App\Http\Requests\StoreLokerRequest;
 use App\Http\Requests\UpdateLokerRequest;
-use App\Models\Perusahaan;
 
 class LokerController extends Controller
 {
@@ -80,6 +81,11 @@ class LokerController extends Controller
         }
 
         $data['id_perusahaan'] = $perusahaan->id;
+
+        $tglAktif = Carbon::parse($data['tgl_aktif']);
+        if ($tglAktif->isSameDay(now())) {
+            $loker->status = 'Sedang Seleksi';
+        }
 
         $loker->update($data);
         return redirect()->route('daftar-loker')->with('success', 'Lowongan pekerjaan berhasil diperbarui.');

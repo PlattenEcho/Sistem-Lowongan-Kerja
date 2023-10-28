@@ -17,7 +17,8 @@ class LokerFactory extends Factory
      */
     public function definition(): array
     {
-        $status = $this->faker->randomElement(['Aktif', 'Sedang Seleksi', 'Tutup']);
+        // $status = $this->faker->randomElement(['Aktif', 'Sedang Seleksi', 'Tutup']);
+        $status = 'Aktif';
         $tgl_update = '';
         $tgl_aktif = '';
         $tgl_tutup = '';

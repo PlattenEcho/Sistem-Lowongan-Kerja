@@ -54,7 +54,7 @@
                     <th scope="col" class="px-6 py-3">
                         Perusahaan
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-4 py-3">
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3 text-right">
@@ -81,7 +81,7 @@
                         <td class="px-6 py-4">
                             {{ $loker->perusahaan->nama }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-4 py-4">
                             {{ $loker->status }}
                         </td>
                         <td class="px-6 py-4 text-right">

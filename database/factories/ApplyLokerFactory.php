@@ -21,12 +21,13 @@ class ApplyLokerFactory extends Factory
         $loker = Loker::inRandomOrder()->first();
         $tgl_apply = '';
         if ($loker->status == 'Aktif') {
-            $tgl_apply = $this->faker->dateTimeBetween($loker->tgl_update, $loker->tgl_aktif);
-        } else if ($loker->status == 'Sedang Seleksi') {
             $tgl_apply = now();
         } else {
-            $tgl_apply = now();
+            $tgl_apply = $this->faker->dateTimeBetween($loker->tgl_update, $loker->tgl_aktif);
         }
+        // } else {
+        //     $tgl_apply = now();
+        // }
 
         return [
             'id_loker' => $loker->id,

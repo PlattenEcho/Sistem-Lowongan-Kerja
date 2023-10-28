@@ -29,13 +29,13 @@
     Daftar Lowongan Kerja</h1>
 
 <div class="flex justify-center items-center h-full">
-    <div class="bg-green-500 p-4 m-2">
+    <div class="bg-green-500 text-white p-4 m-2">
         <p>Aktif: {{ $statusCounts['Aktif'] }}</p>
     </div>
-    <div class="bg-yellow-200 p-4 m-2">
+    <div class="bg-yellow-500 text-white p-4 m-2">
         <p>Sedang Seleksi: {{ $statusCounts['Sedang Seleksi'] }}</p>
     </div>
-    <div class="bg-red-500 p-4 m-2">
+    <div class="bg-red-500 text-white p-4 m-2">
         <p>Tutup: {{ $statusCounts['Tutup'] }}</p>
     </div>
 </div>

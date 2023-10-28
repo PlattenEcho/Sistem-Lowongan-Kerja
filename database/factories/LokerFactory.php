@@ -46,7 +46,7 @@ class LokerFactory extends Factory
             'gaji_max' => $this->faker->numberBetween(7000000, 10000000),
             'nama_cp' => $this->faker->name(),
             'email_cp' => $this->faker->unique()->safeEmail(),
-            'no_telp_cp' => $this->faker->phoneNumber(),
+            'no_telp_cp' => $this->faker->numerify('############'),
             'tgl_update' => $tgl_update,
             'tgl_aktif' => $tgl_aktif,
             'tgl_tutup' => $tgl_tutup,

@@ -73,14 +73,13 @@ class TahapanApplyController extends Controller
         $tahapanApply->save();
 
         $loker = $applyLoker->loker;
+        $tahapanApplyCount = TahapanApply::whereIn('id_apply', $loker->appliedFor->pluck('id'))
+            ->count();
 
-        // Check if all related ApplyLoker records have id_tahapan = 2
-        $allTahapan2 = $loker->appliedFor->every(function ($applyLoker) {
-            return $applyLoker->tahapanApply->where('id_tahapan', 2)->count() > 0;
-        });
+        $applyLokerCount = $loker->appliedFor->count();
 
-        if ($allTahapan2) {
-            // If all Tahapan Apply have id_tahapan 2, update tgl_tutup loker
+        if ($tahapanApplyCount === $applyLokerCount) {
+            // If the counts match, update tgl_tutup loker
             $loker->tgl_tutup = now();
             $loker->status = 'Tutup';
             $loker->save();

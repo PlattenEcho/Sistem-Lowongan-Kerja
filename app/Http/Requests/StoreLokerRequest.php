@@ -32,7 +32,7 @@ class StoreLokerRequest extends FormRequest
             'nama_cp' => 'required',
             'email_cp' => 'required|email',
             'no_telp_cp' => 'required|numeric',
-            'tgl_aktif' => 'required',
+            'tgl_aktif' => 'required|after:today',
         ];
     }
 
